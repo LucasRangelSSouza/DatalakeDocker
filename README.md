@@ -61,22 +61,22 @@ Se você conseguir visualizar a tela inicial de todos os endereços todo o ambie
  
 ## Configurando o ambiente
 ###### 1º Configurando o airflow  e o spark:
-* Para configurar o airflow e o spark, abra a interface do airflow http://localhost:8282/admin/. ![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowHome.png)
+* Para configurar o airflow e o spark, abra a interface do airflow http://localhost:8282/admin/. ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowHome.png)
 
 * Na barra de pesquisa no canto superior direito digite **Prepare_lakehouse** (como na imagem abaixo) e pressione enter. Sera exibida a dag Prepare_lakehouse, clique sobre ela para abrir a dag.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowPesquisa.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowPesquisa.png)
 
 * Sera exibida a visualização da dag em arvore como na imagem abaixo, clique em **Graph View** e logo apos em **Trigger Dag** no canto superior direito.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowGrap.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowGrap.png)
 
 * Será exibida um alerta como na imagem abaixo indagando se deseja mesmo iniciar a dag, clique em sim.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowTriggerDag.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowTriggerDag.png)
 
 * Neste momento a dag está sendo executada e as configuraçoes sendo realizadas, aquarde alguns minutos, e va pressionando de vez enquanto o botão reload para ver o progresso da execução.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowReload.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowReload.png)
 
 * Assim que todos os blocos da dag estiverem contornados de verde escuro, a configuração terminou, e o ambiente Airflow e Spark estão configurados e prontos para uso.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowPrepareOK.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowPrepareOK.png)
 
 ###### 2º Acessando  e autenticando no Jupyter notebook:
 * Para autenticar no jupyter notebook, é necessario um token gerado aleatoreamente pelo jupyter a cada execução. Para obter esse token, abra um terminal ou cmd e digite o seguinte comando:
@@ -84,17 +84,17 @@ Se você conseguir visualizar a tela inicial de todos os endereços todo o ambie
     C:\> docker logs -f docker-jupyter-spark-1 
     ```
 * Você vera logs semelhantes a imagem abaixo, role até a parte final dos logs, e você vera o token de acesso como marcado em vermelho na imagem abaixo. O token é apenas o hash, no caso da imagem abaixo o token seria:  26db7d445966c69486dc8bd0dd864046502fa1639088219c
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/jupyterToken.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/jupyterToken.png)
 
 * Em posse do numero do token navegue até a url da home do jupyter: http://127.0.0.1:8888/ . Você vera a interface como na imagem abaixo. Cole o token obtido anteriormente na caixa de texto **Password or token**, e depois clique em login. 
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/jupyterLogin.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/jupyterLogin.png)
 
 * Se você consegue ver a interface como na imagem abaixo o Jupyter Notebook está pronto para ser utilizado. (No diretório -  work/notebook/ existem alguns notebooks com exemplos que podem ser uteis.) 
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/jupyterOK.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/jupyterOK.png)
 
 ###### 3º Acessando o PgAdmin  e autenticando no servidor Postgresql :
 * Para acessar a interface do PgAdmin  acesse a URL: http://localhost:16543/ . Será exibida a tela de login do PgAdmin 4 como na imagem abaixo. 
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/PgAdminLogin.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/PgAdminLogin.png)
  * Os dados padrão de login do PgAdmin são:
  ***Login**: user@pgadmin.com
  ***Senha**: PgAdmin@c4680
@@ -112,42 +112,42 @@ Se você conseguir visualizar a tela inicial de todos os endereços todo o ambie
 A fim de testar o ambiente, foi desenvolvido um pipeline de dados que realiza o download de dados do enem 2020 e realiza a transformação e tratativa dos dados, sendo assim nomeado de **pipeline-microdados**.
 ### Sobre o pipeline-microdados.
 O pipeline realiza o download de arquivos do site do inep, e realiza o tratamento e a modelagem dos dados em star schema, os dados finais são dispostos em camadas dentro do lake (montado dentro da folder lake do repositorio), bem como os dados da camada business são salvos na base de dados relacional postgress. Observe abaixo o desenho de solução na arquitetura dos serviços do lakehouse docker. 
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/diagramaDesenhoSolucao.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/diagramaDesenhoSolucao.png)
 
 Observe a modelagem star schema disponibilizada na business e na base de dados postgresql.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/diagramaStarSchema.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/diagramaStarSchema.png)
 
 Confira os códigos das transformações realizadas no pipeline: 
-[Dag Airflow / DownloadFile](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[landing2raw](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[raw2rusted](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[fato_enem](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_sexo](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_raca](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_escola](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_ensino](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_uf](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_municipio](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_zona](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[dim_situacao_escola](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
-[save_postgress](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/)
+[Dag Airflow / DownloadFile](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[landing2raw](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[raw2rusted](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[fato_enem](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_sexo](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_raca](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_escola](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_ensino](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_uf](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_municipio](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_zona](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[dim_situacao_escola](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+[save_postgress](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
 ### Executando o pipeline-microdados.
-* Para executar o pipeline-microdados, abra a interface do airflow http://localhost:8282/admin/. ![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowHome.png)
+* Para executar o pipeline-microdados, abra a interface do airflow http://localhost:8282/admin/. ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowHome.png)
 
 * Na barra de pesquisa no canto superior direito digite **pipeline-microdados** (como na imagem abaixo) e pressione enter. Sera exibida a dag pipeline-microdados, clique sobre ela para abrir a dag.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowMicrodadosA.png.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowMicrodadosA.png.png)
 
 * Sera exibida a visualização da dag em arvore como na imagem abaixo, clique em **Graph View** e logo apos em **Trigger Dag** no canto superior direito.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowMicrodadosB.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowMicrodadosB.png)
 
 * Será exibida um alerta como na imagem abaixo indagando se deseja mesmo iniciar a dag, clique em sim.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowTriggerDag.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowTriggerDag.png)
 
 * Neste momento a dag está sendo executada e as etapas sendo realizadas, aquarde alguns minutos (geralmente demora entre 15 a 20 minutos), e vá pressionando de vez enquanto o botão reload para ver o progresso da execução.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowMicrodadosC.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowMicrodadosC.png)
 
 * Assim que todos os blocos da dag estiverem contornados de verde escuro, a execução terminou e os dados já estão disponíveis nas folders do lake e na base de dados postgreSQL.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/doc/airflowMicrodadosD.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowMicrodadosD.png)
 ### Validando os resultados pipeline-microdados.
 
 
