@@ -15,13 +15,13 @@ O ambiente do projeto é construido usando 5 imagens docker.
 - postgres:9.6
 - dpage/pgadmin4
 - jupyter/pyspark-notebook:spark-3.1.2
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/utils/diagramaImagens.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/diagramaImagens.png)
 
 As imagens são executadas em 7 containers dentro do docker, sendo que 3 containers são referentes a 3 workers spark trabalhando paralelamente.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/utils/diagramaContaines.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/diagramaContaines.png)
 
 Sendo assim a arquitetura do ambiente é orquestrada de acordo com o diagrama abaixo.
-![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/utils/diagramaServicos.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/diagramaServicos.png)
 
 ## Subindo o ambiente
 
@@ -50,7 +50,7 @@ O ambiente é executado em containers docker, sendo assim é necessário que a m
     C:\> docker ps -a
     ```
  * Caso todo processo tenha ocorrido normalmente você vera como a seguir:
- ![](https://github.com/LucasRangelSSouza/criptoCurrency/blob/main/utils/composeup.png)
+ ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/composeup.png)
  ###### 4º Teste o acesso as ferramentas:
 - Airflow : http://localhost:8282/admin/
 - Spark Master: http://localhost:8181/
