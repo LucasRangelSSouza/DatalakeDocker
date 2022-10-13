@@ -33,7 +33,7 @@ A estrutura de pastas do repositorio é a seguinte:
 ## Subindo o ambiente
 
 O ambiente é executado em containers docker, sendo assim é necessário que a maquina o qual vai rodar o ambiente tenha o docker instalado.
-###### 1º Clone o repositorio DatalakeDocker
+#### 1º Clone o repositorio DatalakeDocker
 * Abra o o terminal ou o cmd e Navegue até um diretório pré-existente de sua escolha:
     ```
     C:\> chdir C:\<MeuDiretorio>\
@@ -49,7 +49,7 @@ O ambiente é executado em containers docker, sendo assim é necessário que a m
     C:\> git clone https://github.com/LucasRangelSSouza/DatalakeDocker
     ``'
 
-###### 2º Execute o docker compose
+#### 2º Execute o docker compose
 * Abra o o terminal de comandos do seu SO e Navegue até a pasta docker dentro do diretorio onde o repositorio foi clonado:
     ```
     C:\> chdir C:\<MeuDiretorio>\DatalakeDocker\docker
@@ -66,7 +66,7 @@ O ambiente é executado em containers docker, sendo assim é necessário que a m
 
  ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/composeup.png)
 
- ###### 4º Teste o acesso as ferramentas:
+ #### 4º Teste o acesso as ferramentas:
 - Airflow : http://localhost:8282/admin/
 - Spark Master: http://localhost:8181/
 - PgAdmin 4: http://localhost:16543/
@@ -75,7 +75,7 @@ O ambiente é executado em containers docker, sendo assim é necessário que a m
 Se você conseguir visualizar a tela inicial de todos os endereços todo o ambiente foi construído com sucesso, e está pronto para ser configurado.
  
 ## Configurando o ambiente
-###### 1º Configurando o airflow  e o spark:
+#### 1º Configurando o airflow  e o spark:
 * Para configurar o airflow e o spark, abra a interface do airflow http://localhost:8282/admin/. 
 
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowHome.png)
@@ -100,7 +100,7 @@ Se você conseguir visualizar a tela inicial de todos os endereços todo o ambie
 
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowPrepareOK.png)
 
-###### 2º Acessando  e autenticando no Jupyter notebook:
+#### 2º Acessando  e autenticando no Jupyter notebook:
 * Para autenticar no jupyter notebook, é necessario um token gerado aleatoreamente pelo jupyter a cada execução. Para obter esse token, abra um terminal ou cmd e digite o seguinte comando:
     ```
     C:\> docker logs -f docker-jupyter-spark-1 
@@ -117,7 +117,7 @@ Se você conseguir visualizar a tela inicial de todos os endereços todo o ambie
 
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/jupyterOK.png)
 
-###### 3º Acessando o PgAdmin  e autenticando no servidor Postgresql :
+#### 3º Acessando o PgAdmin  e autenticando no servidor Postgresql :
 * Para acessar a interface do PgAdmin  acesse a URL: http://localhost:16543/ . Será exibida a tela de login do PgAdmin 4 como na imagem abaixo. 
 
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/PgAdminLogin.png)
@@ -197,7 +197,7 @@ Confira os códigos das transformações realizadas no pipeline:
 
 * Será exibida um alerta como na imagem abaixo indagando se deseja mesmo iniciar a dag, clique em sim.
 
-![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowTriggerDag.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowMicrodadosE.png.png)
 
 * Neste momento a dag está sendo executada e as etapas sendo realizadas, aquarde alguns minutos (geralmente demora entre 15 a 20 minutos), e vá pressionando de vez enquanto o botão reload para ver o progresso da execução.
 
@@ -209,6 +209,89 @@ Confira os códigos das transformações realizadas no pipeline:
 
 ### Validando os resultados pipeline-microdados.
 
+Existem três formas de validar se a execução do pipeline foi um sucesso:
+
+#### 1º verificar os arquivos gerados pelo pipeline nas camadas do lake
+
+* Navegue até o diretório **DatalakeDocker\lake\landing\microdados_enem** e verifique os arquivos gerados na camada landing do lake, se estiverem como na imagem abaixo a execução do processo de download foi um sucesso.
+
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/landing.png)
+
+* Navegue até o diretório **DatalakeDocker\lake\raw\enem** e verifique os arquivos gerados na camada raw do lake, se estiverem como na imagem abaixo a execução do processo landing2raw foi um sucesso.
+
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/landin2raw.png)
+
+* Navegue até o diretório **DatalakeDocker\lake\trusted\enem** e verifique os arquivos gerados na camada trusted do lake, se estiverem como na imagem abaixo a execução do processo raw2trusted foi um sucesso.
+
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/raw2trusted.png)
+
+* Navegue até o diretório **DatalakeDocker\lake\business\enem** e verifique os arquivos gerados na camada business do lake, se estiverem como na imagem abaixo a execução do processo das dimensoes e fatos foi um sucesso.
+
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/business.png)
+
+
+#### 2º verificar os dados da business na base de dados relacional postgresql
+
+ Siga os passos **Acessando o PgAdmin  e autenticando no servidor Postgresql** descritos anteriormente para realizar o login no servidor postgresql. Uma vez conectado no servidor execute as seguintes consultas sql, e verifique se são exibidos resultados. Caso haja resultados como na imagem abaixo, o pipeline salvou corretamente os dados na base de dados relacional.
+
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/postfatoenem.png)
+
+* FATO_ENEM
+```
+    SELECT * FROM fato_enem
+```
+
+* DIM_SEXO
+```
+    SELECT * FROM dim_sexo
+```
+
+* DIM_RACA
+```
+    SELECT * FROM dim_raca
+```
+
+* DIM_ESCOLA
+```
+    SELECT * FROM dim_escola
+```
+
+* DIM_ESCOLA
+```
+    SELECT * FROM dim_ensino
+```
+
+* DIM_ESCOLA
+```
+    SELECT * FROM dim_ensino
+```
+
+* DIM_UF
+```
+    SELECT * FROM dim_uf
+```
+
+* DIM_MUNICIPIO
+```
+    SELECT * FROM dim_municipio
+```
+
+* DIM_ZONA
+```
+    SELECT * FROM dim_zona
+```
+
+* DIM_SITUACAO_ESCOLA
+```
+    SELECT * FROM dim_situacao_escola
+```
+
+#### 3º validar os dados via pyspark com jupyter notebook
+
+Siga os passos **Acessando e autenticando no Jupyter notebook** descritos anteriormente para realizar o login no jupyter notebook. Navegue ate ** work/notebooks/micro_dados/ ** e abra o notebook ** validate_pipeline_microdados.ipynb **. Execute todas as celulas e verifique se o resultado é o mesmo do resultado apresentado no notebook salvo no repositorio: [Notebook de validação](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/notebooks/micro_dados/validate_pipeline_microdados.ipynb)
+
+
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/notebookOficial.png)
 
 ## Contribuições e to do
  Temos algumas melhorias em vista para este projeto, sinta-se a vontade para contribuir.
