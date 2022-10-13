@@ -46,7 +46,7 @@ originalCols = ["NU_INSCRICAO","TP_SEXO","TP_COR_RACA","TP_ESCOLA","TP_ENSINO",
 df_parquet = df_parquet.select(*originalCols)
 
 df_parquet = df_parquet.withColumn("COD_INSCRICAO", when(df_parquet.NU_INSCRICAO.isNull() ,-1)
-                                 .otherwise(df_parquet.NU_INSCRICAO).cast(IntegerType()))
+                                 .otherwise(df_parquet.NU_INSCRICAO).cast(StringType()))
 
 
 df_parquet = df_parquet.withColumn("COD_SEXO", when(df_parquet.TP_SEXO == "M",1)
