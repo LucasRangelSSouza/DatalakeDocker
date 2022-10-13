@@ -219,7 +219,7 @@ Existem três formas de validar se a execução do pipeline foi um sucesso:
 
 * Navegue até o diretório **DatalakeDocker\lake\raw\enem** e verifique os arquivos gerados na camada raw do lake, se estiverem como na imagem abaixo a execução do processo landing2raw foi um sucesso.
 
-![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/landin2raw.png)
+![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/landing2raw.png)
 
 * Navegue até o diretório **DatalakeDocker\lake\trusted\enem** e verifique os arquivos gerados na camada trusted do lake, se estiverem como na imagem abaixo a execução do processo raw2trusted foi um sucesso.
 
