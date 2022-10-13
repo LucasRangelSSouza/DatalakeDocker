@@ -30,7 +30,6 @@ A estrutura de pastas do repositorio é a seguinte:
 
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/pastas.png)
 
-
 ## Subindo o ambiente
 
 O ambiente é executado em containers docker, sendo assim é necessário que a maquina o qual vai rodar o ambiente tenha o docker instalado.
