@@ -42,6 +42,11 @@ Esse é um projeto desenvolvido com o intuito de ser um ambiente datalake comple
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [3º validar os dados via pyspark com jupyter notebook](https://github.com/LucasRangelSSouza/DatalakeDocker#3%C2%BA-validar-os-dados-via-pyspark-com-jupyter-notebook)
 
+[Contribuições e to do](https://github.com/LucasRangelSSouza/DatalakeDocker#contribui%C3%A7%C3%B5es-e-to-do)
+
+[Licença](https://github.com/LucasRangelSSouza/DatalakeDocker#licen%C3%A7a)
+
+
 
 ## Sobre o ambiente
 O ambiente do projeto é construido usando 5 imagens docker.
