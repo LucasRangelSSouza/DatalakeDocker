@@ -8,6 +8,29 @@ Esse é um projeto desenvolvido com o intuito de ser um ambiente datalake comple
 - PgAdmin 4
 - Jupyter Notebook (Pyspark Spark-3.1.2)
 
+
+## Sumario
+[Sobre o ambiente](https://github.com/LucasRangelSSouza/DatalakeDocker#sobre-o-ambiente)
+
+[Subindo o ambiente](https://github.com/LucasRangelSSouza/DatalakeDocker#subindo-o-ambiente)
+&nbsp;&nbsp; &nbsp;   [1º Clone o repositorio DatalakeDocker](https://github.com/LucasRangelSSouza/DatalakeDocker#1%C2%BA-clone-o-repositorio-datalakedocker)
+&nbsp;&nbsp; &nbsp;  [2º Execute o docker compose](https://github.com/LucasRangelSSouza/DatalakeDocker#2%C2%BA-execute-o-docker-compose)
+&nbsp;&nbsp; &nbsp; [3º Teste o acesso as ferramentas](https://github.com/LucasRangelSSouza/DatalakeDocker#3%C2%BA-teste-o-acesso-as-ferramentas)
+
+[Configurando o ambiente](https://github.com/LucasRangelSSouza/DatalakeDocker#configurando-o-ambiente)
+&nbsp;&nbsp; &nbsp;   [1º verificar os arquivos gerados pelo pipeline nas camadas do lake](https://github.com/LucasRangelSSouza/DatalakeDocker#1%C2%BA-verificar-os-arquivos-gerados-pelo-pipeline-nas-camadas-do-lake)
+&nbsp;&nbsp; &nbsp;  [2º verificar os dados da business na base de dados relacional postgresql](https://github.com/LucasRangelSSouza/DatalakeDocker#2%C2%BA-verificar-os-dados-da-business-na-base-de-dados-relacional-postgresql)
+&nbsp;&nbsp; &nbsp;   [3º validar os dados via pyspark com jupyter notebook](https://github.com/LucasRangelSSouza/DatalakeDocker#3%C2%BA-validar-os-dados-via-pyspark-com-jupyter-notebook)
+
+[Testando o ambiente (pipeline-microdados)](https://github.com/LucasRangelSSouza/DatalakeDocker#testando-o-ambiente-pipeline-microdados)
+&nbsp;&nbsp; &nbsp;   [Sobre o pipeline-microdados](https://github.com/LucasRangelSSouza/DatalakeDocker#sobre-o-pipeline-microdados)
+&nbsp;&nbsp; &nbsp;   [Executando o pipeline-microdados](https://github.com/LucasRangelSSouza/DatalakeDocker#executando-o-pipeline-microdados)
+&nbsp;&nbsp; &nbsp;   [Validando os resultados pipeline-microdados](https://github.com/LucasRangelSSouza/DatalakeDocker#validando-os-resultados-pipeline-microdados)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [1º Configurando o airflow e o spark](https://github.com/LucasRangelSSouza/DatalakeDocker#1%C2%BA-configurando-o-airflow--e-o-spark)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [2º Acessando e autenticando no Jupyter notebook](https://github.com/LucasRangelSSouza/DatalakeDocker#2%C2%BA-acessando--e-autenticando-no-jupyter-notebook)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [3º Acessando o PgAdmin e autenticando no servidor Postgresql](https://github.com/LucasRangelSSouza/DatalakeDocker#3%C2%BA-acessando-o-pgadmin--e-autenticando-no-servidor-postgresql-)
+
+
 ## Sobre o ambiente
 O ambiente do projeto é construido usando 5 imagens docker.
 - Airflow (Build sobre a imagem python:3.6-stretch)
@@ -66,7 +89,7 @@ O ambiente é executado em containers docker, sendo assim é necessário que a m
 
  ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/composeup.png)
 
- #### 4º Teste o acesso as ferramentas:
+ #### 3º Teste o acesso as ferramentas:
 - Airflow : http://localhost:8282/admin/
 - Spark Master: http://localhost:8181/
 - PgAdmin 4: http://localhost:16543/
