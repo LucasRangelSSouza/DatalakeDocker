@@ -31,6 +31,12 @@ O ambiente é executado em containers docker, sendo assim é necessário que a m
     ```
     C:\> chdir C:\<MeuDiretorio>\
     ```
+
+* A fim de evitar erros durante a clonagem do repositorio execute o seguinte comando git: (Esse comando evita a conversão de linhas LF dos scripts .sh para CRLF, tornando os scripts .sh não funcionais) 
+    ```
+    C:\> git config core.autocrlf true
+    ```
+
 * Clone o repositorio DatalakeDocker
     ```
     C:\> git clone https://github.com/LucasRangelSSouza/DatalakeDocker
@@ -96,14 +102,21 @@ Se você conseguir visualizar a tela inicial de todos os endereços todo o ambie
 * Para acessar a interface do PgAdmin  acesse a URL: http://localhost:16543/ . Será exibida a tela de login do PgAdmin 4 como na imagem abaixo. 
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/PgAdminLogin.png)
  * Os dados padrão de login do PgAdmin são:
- ***Login**: user@pgadmin.com
- ***Senha**: PgAdmin@c4680
+
+ **Login**: user@pgadmin.com
+
+ **Senha**: PgAdmin@c4680
  
 * Após realizar o login na interface do pgAdmin, você ja pode registrar o servidor postgresql executando no container docker utilizando as seguintes credenciais: (Observe que essas credenciais são validas apenas para aplicativos que executam dentro do docker)
+
  ***Hostname**: postgres
+
  ***Port**: 5432
+
  ***Manteince Database**: test
+
  ***Username**: test
+
  ***Password**: postgres 
 
 
@@ -118,19 +131,33 @@ Observe a modelagem star schema disponibilizada na business e na base de dados p
 ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/diagramaStarSchema.png)
 
 Confira os códigos das transformações realizadas no pipeline: 
-[Dag Airflow / DownloadFile](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[landing2raw](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[raw2rusted](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[fato_enem](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_sexo](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_raca](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_escola](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_ensino](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_uf](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_municipio](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_zona](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[dim_situacao_escola](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
-[save_postgress](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/)
+
+[Dag Airflow / DownloadFile](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/dags/pipeline-microdados-enem.py)
+
+[landing2raw](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/lake_stages/landing2raw.py)
+
+[raw2rusted](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/lake_stages/raw2trusted.py)
+
+[fato_enem](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/fato_enem.py)
+
+[dim_sexo](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_sexo.py)
+
+[dim_raca](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_raca.py)
+
+[dim_escola](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_escola.py)
+
+[dim_ensino](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_ensino.py)
+
+[dim_uf](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_uf.py)
+
+[dim_municipio](hhttps://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_municipio.py)
+
+[dim_zona](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_zona.py)
+
+[dim_situacao_escola](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/star_schema/dim_situacao_escola.py)
+
+[save_postgress](https://github.com/LucasRangelSSouza/DatalakeDocker/blob/main/spark/app/lake_stages/savePostgressDB.py)
+
 ### Executando o pipeline-microdados.
 * Para executar o pipeline-microdados, abra a interface do airflow http://localhost:8282/admin/. ![](https://raw.githubusercontent.com/LucasRangelSSouza/DatalakeDocker/main/doc/airflowHome.png)
 
